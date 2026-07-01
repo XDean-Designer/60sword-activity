@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>定名宝剑</title>
+  <link rel="stylesheet" href="css/tailwind.css">
+  <link rel="stylesheet" href="css/page5-fx.css">
+  <style>
+    html, body { margin: 0; overflow-x: hidden; }
+    .icon-border-gold {
+      padding: 11.2px;
+      background: linear-gradient(145deg, #fff8e8 0%, #ffe8c0 32%, #e8c078 68%, #a87838 100%);
+    }
+    .page-divider { height: 1px; width: 390px; }
+    .page-divider img { display: block; height: 1px; width: 100%; }
+    #title-block { top: 109px; height: 132px; overflow: visible; }
+    #title-art {
+      left: 31px; top: 0; width: 341px; height: 122px;
+      object-fit: contain; object-position: center top;
+      z-index: 2;
+    }
+    #center-icon-wrap { width: 258px; height: 258px; overflow: visible; }
+    #subtitle-label { top: 573px; }
+    #name-input-wrap { top: 609px; cursor: text; }
+    #name-input-hint {
+      top: 653px;
+      font-size: 10px;
+      color: #555555;
+    }
+    #name-display,
+    #name-edit {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      white-space: nowrap;
+    }
+    #name-edit {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      max-width: 100%;
+    }
+    #name-edit.is-hidden { display: none; }
+    #name-display.is-hidden { display: none; }
+    #name-ph {
+      font-size: 14px;
+      font-weight: 400;
+      color: #bbb;
+      flex-shrink: 0;
+    }
+    #name-ph.is-hidden { display: none; }
+    #name-suffix {
+      font-size: 16px;
+      font-weight: 500;
+      color: #1a1a1a;
+      flex-shrink: 0;
+    }
+    #player-name-input {
+      border: none;
+      outline: none;
+      background: transparent;
+      padding: 0;
+      margin: 0;
+      min-width: 0;
+      font-size: 16px;
+      font-weight: 500;
+      color: #1a1a1a;
+      text-align: left;
+      caret-color: #1a1a1a;
+    }
+    .dice-wrap {
+      left: 318px;
+      top: 608px;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    #start-btn-wrap {
+      top: 689px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 286px;
+      height: 60px;
+    }
+  </style>
+</head>
+<body class="bg-black min-h-screen">
+  <div id="page-root" class="relative mx-auto h-[844px] w-full max-w-[390px] overflow-hidden" data-node-id="236:183" data-name="活动页2">
+
+    <div aria-hidden="true" class="pointer-events-none absolute inset-0 z-0">
+      <div class="absolute inset-0 bg-[rgba(221,221,221,0.87)]"></div>
+      <div class="absolute inset-0 overflow-hidden opacity-40">
+        <img alt="" class="absolute left-[-14.14%] top-[-1.66%] h-[105.33%] w-[128.2%] max-w-none" src="assets/images/page5-2/bg-castle.png">
+      </div>
+      <div class="absolute inset-0" style="background-image: linear-gradient(1.1368683772161603e-13deg, rgba(0, 0, 0, 0.71) 0%, rgba(0, 0, 0, 0) 29.147%), linear-gradient(180.00000000000017deg, rgba(66, 127, 189, 0.37) 13.079%, rgba(66, 127, 189, 0) 33.175%), linear-gradient(90deg, rgba(193, 220, 255, 0.67) 0%, rgba(193, 220, 255, 0.67) 100%);"></div>
+    </div>
+
+    <div aria-hidden="true" class="page5-bottom-fx">
+      <div class="page5-gold-glow-layer absolute inset-0">
+        <div class="absolute inset-0" style="background: linear-gradient(to top, rgba(255, 195, 66, 0.38) 0%, rgba(255, 213, 149, 0.18) 45%, rgba(255, 195, 66, 0.04) 78%, transparent 100%);"></div>
+        <div class="absolute bottom-0 left-0 h-[80px] w-full" style="background: radial-gradient(ellipse 90% 100% at 50% 100%, rgba(255, 220, 130, 0.55) 0%, transparent 72%);"></div>
+      </div>
+      <canvas id="spark-canvas" aria-hidden="true" class="absolute inset-0 size-full"></canvas>
+    </div>
+
+    <div class="absolute left-0 top-0 z-10 flex w-[390px] items-center justify-between pb-[14px] pl-[27px] pr-[26px] pt-[18px]" data-node-id="236:189">
+      <div class="relative h-[21px] w-[54px]">
+        <p class="absolute left-[27px] top-[calc(50%-11px)] w-[54px] -translate-x-1/2 whitespace-nowrap text-center text-[17px] font-semibold leading-[22px] tracking-[-0.408px] text-white" style="font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif; font-feature-settings: 'case' 1;">9:41</p>
+      </div>
+      <div class="relative h-[13px] w-[78.261px]">
+        <div class="absolute inset-[0_0_0_65.08%]"><img alt="" class="absolute inset-0 block size-full max-w-none" src="assets/images/page5-1/battery.svg"></div>
+        <div class="absolute inset-[5.13%_44.29%_2.56%_33.99%]"><img alt="" class="absolute inset-0 block size-full max-w-none" src="assets/images/page5-1/wifi.svg"></div>
+        <div class="absolute inset-[5.13%_75.47%_2.56%_0]"><img alt="" class="absolute inset-0 block size-full max-w-none" src="assets/images/page5-1/cellular.svg"></div>
+      </div>
+    </div>
+
+    <div class="absolute left-0 top-[59px] z-10 flex h-[44px] w-[390px] items-center justify-between py-[10px] pl-[10px] pr-[16px]" data-node-id="236:190">
+      <div class="relative size-[24px]"><img alt="" class="absolute inset-0 block size-full max-w-none" src="assets/images/page5-1/info.svg"></div>
+      <p class="relative shrink-0 whitespace-nowrap text-center text-[14px] font-medium leading-[22px] tracking-[-0.408px] text-[#555]">跳过</p>
+    </div>
+
+    <div id="title-block" class="absolute left-0 z-10 w-[390px]" data-node-id="295:222">
+      <img id="title-art" alt="定名全属于你的独一无二的宝剑" class="pointer-events-none absolute max-w-none" src="assets/images/page5-2/title-art.png">
+    </div>
+
+    <div class="page-divider absolute left-0 top-[235px] z-10" data-node-id="236:197">
+      <img alt="" src="assets/images/page5-1/divider-top.svg">
+    </div>
+
+    <button type="button" id="back-btn" class="absolute left-[127px] top-[249px] z-20 flex h-[32px] w-[136px] cursor-pointer items-center justify-center overflow-hidden rounded-[18px] border-[1.5px] border-solid border-[#ffc96c] bg-[rgba(0,0,0,0.3)] p-0" data-node-id="239:177">
+      <span class="relative shrink-0 whitespace-nowrap text-[14px] font-medium leading-[normal] text-[#ffc96c]">← 返回选剑</span>
+    </button>
+
+    <div id="center-icon-wrap" class="center-icon-apotheosis absolute left-[66px] top-[293px] z-10" data-node-id="236:231">
+      <div aria-hidden="true" class="center-icon-halo"></div>
+      <canvas id="center-fx-canvas" aria-hidden="true" class="pointer-events-none absolute left-1/2 top-1/2 z-0 -translate-x-1/2 -translate-y-1/2" style="width:360px;height:360px"></canvas>
+      <div aria-hidden="true" id="center-burst-ring"></div>
+      <div id="center-icon-frame" class="icon-border-gold relative z-[1] size-full rounded-full" data-node-id="236:232">
+        <div class="relative size-full overflow-hidden rounded-full">
+          <img id="center-sword-img" alt="" class="absolute inset-0 size-full max-w-none rounded-full object-cover" src="assets/images/swords2/sword-1.png">
+          <div class="absolute inset-0 rounded-full shadow-[inset_0px_5px_4px_0px_rgba(0,0,0,0.5)]"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-divider absolute left-0 top-[790px] z-10" data-node-id="236:209">
+      <img alt="" src="assets/images/page5-1/divider-bottom.svg">
+    </div>
+
+    <div id="subtitle-label" class="absolute left-1/2 z-10 flex w-[290px] -translate-x-1/2 flex-col justify-center text-center" data-node-id="236:260">
+      <p class="whitespace-nowrap text-[16px] font-bold leading-[22px] tracking-[1px] text-[#996b50]">你定名·全属于你独一无二的宝剑</p>
+    </div>
+
+    <div id="name-input-wrap" class="absolute left-1/2 z-10 h-[38px] w-[214px] -translate-x-1/2 rounded-[8px] bg-white" data-node-id="236:239">
+      <p id="name-display" class="text-center text-[16px] font-medium leading-[normal] text-[#1a1a1a]">独孤九剑</p>
+      <div id="name-edit" class="is-hidden" aria-hidden="true">
+        <span id="name-ph">请输入</span>
+        <input id="player-name-input" type="text" inputmode="text" autocomplete="off" autocorrect="off" spellcheck="false" maxlength="7" aria-label="剑名前缀">
+        <span id="name-suffix">剑</span>
+      </div>
+    </div>
+    <p id="name-input-hint" class="absolute left-1/2 z-10 -translate-x-1/2 whitespace-nowrap text-center leading-[normal]">最多输入7个字</p>
+
+    <div class="dice-wrap absolute z-10" data-node-id="236:262">
+      <div aria-hidden="true" class="dice-glow-halo absolute inset-0 rounded-full"></div>
+      <button type="button" id="dice-btn" class="relative size-[24px]" aria-label="随机生成剑名">
+        <div class="absolute inset-[21.43%_51.56%_0_0]"><img alt="" class="absolute inset-0 block size-full max-w-none" src="assets/icons/dice-page3/vector1.svg"></div>
+        <div class="absolute inset-[42.76%_57.59%_45.41%_33.44%]"><img alt="" class="absolute inset-0 block size-full max-w-none" src="assets/icons/dice-page3/vector2.svg"></div>
+        <div class="absolute inset-[32.13%_84.92%_56.14%_6%]"><img alt="" class="absolute inset-0 block size-full max-w-none" src="assets/icons/dice-page3/vector3.svg"></div>
+        <div class="absolute inset-[54.83%_71.26%_33.56%_19.71%]"><img alt="" class="absolute inset-0 block size-full max-w-none" src="assets/icons/dice-page3/vector4.svg"></div>
+        <div class="absolute inset-[77.41%_57.57%_11.1%_33.41%]"><img alt="" class="absolute inset-0 block size-full max-w-none" src="assets/icons/dice-page3/vector5.svg"></div>
+        <div class="absolute inset-[66.84%_85.04%_21.62%_5.98%]"><img alt="" class="absolute inset-0 block size-full max-w-none" src="assets/icons/dice-page3/vector6.svg"></div>
+        <div class="absolute inset-[21.37%_0_0.15%_51.6%]"><img alt="" class="absolute inset-0 block size-full max-w-none" src="assets/icons/dice-page3/vector7.svg"></div>
+        <div class="absolute inset-[77.46%_33.34%_10.95%_57.59%]"><img alt="" class="absolute inset-0 block size-full max-w-none" src="assets/icons/dice-page3/vector8.svg"></div>
+        <div class="absolute inset-[54.75%_19.76%_33.52%_71.32%]"><img alt="" class="absolute inset-0 block size-full max-w-none" src="assets/icons/dice-page3/vector9.svg"></div>
+        <div class="absolute inset-[32.2%_6.04%_56.14%_85.04%]"><img alt="" class="absolute inset-0 block size-full max-w-none" src="assets/icons/dice-page3/vector10.svg"></div>
+        <div class="absolute inset-[0_0.71%_62.7%_0.98%]"><img alt="" class="absolute inset-0 block size-full max-w-none" src="assets/icons/dice-page3/vector11.svg"></div>
+        <div class="absolute inset-[21.39%_57.52%_73.53%_29.52%]"><img alt="" class="absolute inset-0 block size-full max-w-none" src="assets/icons/dice-page3/vector12.svg"></div>
+        <div class="absolute inset-[10.86%_29.58%_84.26%_57.67%]"><img alt="" class="absolute inset-0 block size-full max-w-none" src="assets/icons/dice-page3/vector13.svg"></div>
+        <div class="absolute inset-[5.48%_43.48%_89.63%_43.59%]"><img alt="" class="absolute inset-0 block size-full max-w-none" src="assets/icons/dice-page3/vector14.svg"></div>
+        <div class="absolute inset-[16.1%_71.65%_79.04%_15.38%]"><img alt="" class="absolute inset-0 block size-full max-w-none" src="assets/icons/dice-page3/vector15.svg"></div>
+        <div class="absolute inset-[16.31%_15.57%_78.8%_71.62%]"><img alt="" class="absolute inset-0 block size-full max-w-none" src="assets/icons/dice-page3/vector16.svg"></div>
+        <div class="absolute inset-[26.91%_43.75%_68.22%_43.51%]"><img alt="" class="absolute inset-0 block size-full max-w-none" src="assets/icons/dice-page3/vector17.svg"></div>
+      </button>
+    </div>
+
+    <div id="start-btn-wrap">
+      <button type="button" id="start-btn" class="overflow-clip rounded-[25px] border border-solid border-[rgba(255,210,95,0.75)] shadow-[0px_0px_15px_0px_rgba(255,195,42,0.47),0px_0px_20px_0px_rgba(255,195,42,0.22)]" style="background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 234, 182, 0.4) 52.5%, rgba(255, 210, 95, 0.4) 100%), linear-gradient(90deg, rgb(255, 255, 255) 0%, rgb(255, 255, 255) 100%);">
+        <span class="pointer-events-none whitespace-nowrap text-[20px] font-bold leading-[normal] tracking-[2px] text-[#cb8762]">进入联盟</span>
+      </button>
+    </div>
+
+    <div id="white-flash" aria-hidden="true"></div>
+
+  </div>
+
+  <script src="js/page5-state.js"></script>
+  <script src="js/page5-fx.js"></script>
+  <script>
+  (function () {
+    var entryAnim = sessionStorage.getItem(Page5State.ENTRY_KEY);
+    var state = Page5State.loadState();
+    var centerImg = document.getElementById('center-sword-img');
+    var centerWrap = document.getElementById('center-icon-wrap');
+    var pageRoot = document.getElementById('page-root');
+
+    Page5State.initPageEnter();
+    Page5Fx.initGoldenSparks(document.getElementById('spark-canvas'));
+    Page5Fx.initTitleFx(document.getElementById('title-block'));
+
+    var centerFx = Page5Fx.initCenterFx(centerWrap, {
+      fxSize: 360,
+      premium: true,
+      scheme: 'apotheosis',
+      burstOnLoad: entryAnim === 'forward',
+      popOnLoad: true
+    });
+
+    if (state.swordSrc && centerImg) {
+      centerImg.src = state.swordSrc;
+      centerFx.pop();
+    }
+
+    var nameInput = Page5Fx.initNameInput(document.getElementById('name-input-wrap'), {
+      initialName: state.swordName || '独孤九剑',
+      onChange: function (name) {
+        state = Page5State.loadState();
+        state.swordName = name;
+        Page5State.setState(state);
+      }
+    });
+    Page5Fx.initDice(document.getElementById('dice-btn'), nameInput);
+    Page5Fx.initStartFlash(document.getElementById('start-btn'), pageRoot);
+
+    document.getElementById('back-btn').addEventListener('click', function () {
+      state = Page5State.loadState();
+      state.swordName = nameInput.getName();
+      Page5State.setState(state);
+      Page5State.navigateWithSlide('page5-1.html', 'back');
+    });
+
+  })();
+  </script>
+</body>
+</html>

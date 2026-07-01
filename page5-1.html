@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>剑琅选剑</title>
+  <link rel="stylesheet" href="css/tailwind.css">
+  <link rel="stylesheet" href="css/page5-fx.css">
+  <style>
+    html, body { margin: 0; overflow-x: hidden; }
+    .page-divider { height: 1px; width: 390px; }
+    .page-divider img { display: block; height: 1px; width: 100%; }
+    #title-block { top: 109px; height: 132px; overflow: visible; }
+    #title-art {
+      left: 31px; top: 0; width: 341px; height: 122px;
+      object-fit: contain; object-position: center top;
+      z-index: 2;
+    }
+    #grid-fx-host {
+      left: 17px;
+      top: 277px;
+      width: 356px;
+      height: 380px;
+    }
+    #grid-track {
+      transition: transform 0.38s cubic-bezier(0.22, 1, 0.36, 1);
+      will-change: transform;
+    }
+    #grid-track.no-transition { transition: none; }
+    .grid-page { height: 356px; width: 332px; flex-shrink: 0; }
+    #grid-page-dots {
+      top: 663px;
+      transform: translate(-50%, -50%);
+      gap: 12px;
+    }
+    #next-page-btn { cursor: pointer; }
+    #next-page-btn:active { opacity: 0.75; }
+    #subtitle-xuanjian {
+      font-family: 'Source Han Sans SC', sans-serif;
+      background: linear-gradient(to top, rgba(174, 119, 88, 0.8) 0%, rgba(142, 96, 69, 0.8) 53.005%, rgba(147, 66, 55, 0.8) 111.36%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+  </style>
+</head>
+<body class="bg-black min-h-screen">
+  <div id="page-root" class="relative mx-auto h-[844px] w-full max-w-[390px] overflow-hidden" data-node-id="221:196" data-name="活动页1">
+
+    <div aria-hidden="true" class="pointer-events-none absolute inset-0 z-0">
+      <div class="absolute inset-0 bg-[#ddd]"></div>
+      <div class="absolute inset-0 overflow-hidden opacity-40">
+        <img alt="" class="absolute left-[-14.14%] top-[-1.66%] h-[105.33%] w-[128.2%] max-w-none" src="assets/images/page5-1/bg-castle.png">
+      </div>
+      <div class="absolute inset-0" style="background-image: linear-gradient(1.1368683772161603e-13deg, rgba(0, 0, 0, 0.71) 0%, rgba(0, 0, 0, 0) 29.147%), linear-gradient(180.00000000000017deg, rgba(66, 127, 189, 0.37) 13.079%, rgba(66, 127, 189, 0) 33.175%), linear-gradient(90deg, rgba(193, 220, 255, 0.67) 0%, rgba(193, 220, 255, 0.67) 100%);"></div>
+    </div>
+
+    <div aria-hidden="true" class="page5-bottom-fx">
+      <div class="page5-gold-glow-layer absolute inset-0">
+        <div class="absolute inset-0" style="background: linear-gradient(to top, rgba(255, 195, 66, 0.38) 0%, rgba(255, 213, 149, 0.18) 45%, rgba(255, 195, 66, 0.04) 78%, transparent 100%);"></div>
+        <div class="absolute bottom-0 left-0 h-[80px] w-full" style="background: radial-gradient(ellipse 90% 100% at 50% 100%, rgba(255, 220, 130, 0.55) 0%, transparent 72%);"></div>
+      </div>
+      <canvas id="spark-canvas" aria-hidden="true" class="absolute inset-0 size-full"></canvas>
+    </div>
+
+    <div class="absolute left-0 top-0 z-10 flex w-[390px] items-center justify-between pb-[14px] pl-[27px] pr-[26px] pt-[18px]" data-node-id="221:211">
+      <div class="relative h-[21px] w-[54px]">
+        <p class="absolute left-[27px] top-[calc(50%-11px)] w-[54px] -translate-x-1/2 whitespace-nowrap text-center text-[17px] font-semibold leading-[22px] tracking-[-0.408px] text-white" style="font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif; font-feature-settings: 'case' 1;">9:41</p>
+      </div>
+      <div class="relative h-[13px] w-[78.261px]">
+        <div class="absolute inset-[0_0_0_65.08%]"><img alt="" class="absolute inset-0 block size-full max-w-none" src="assets/images/page5-1/battery.svg"></div>
+        <div class="absolute inset-[5.13%_44.29%_2.56%_33.99%]"><img alt="" class="absolute inset-0 block size-full max-w-none" src="assets/images/page5-1/wifi.svg"></div>
+        <div class="absolute inset-[5.13%_75.47%_2.56%_0]"><img alt="" class="absolute inset-0 block size-full max-w-none" src="assets/images/page5-1/cellular.svg"></div>
+      </div>
+    </div>
+
+    <div class="absolute left-0 top-[59px] z-10 flex h-[44px] w-[390px] items-center justify-between py-[10px] pl-[10px] pr-[16px]" data-node-id="221:212">
+      <div class="relative size-[24px]"><img alt="" class="absolute inset-0 block size-full max-w-none" src="assets/images/page5-1/info.svg"></div>
+      <p class="relative shrink-0 whitespace-nowrap text-center text-[14px] font-medium leading-[22px] tracking-[-0.408px] text-[#555]">跳过</p>
+    </div>
+
+    <div id="title-block" class="absolute left-0 z-10 w-[390px]" data-node-id="295:222">
+      <img id="title-art" alt="定名全属于你的独一无二的宝剑" class="pointer-events-none absolute max-w-none" src="assets/images/page5-1/title-art.png">
+    </div>
+
+    <div class="page-divider absolute left-0 top-[235px] z-10" data-node-id="221:222">
+      <img alt="" src="assets/images/page5-1/divider-top.svg">
+    </div>
+
+    <p id="subtitle-xuanjian" class="absolute left-1/2 top-[251px] z-10 -translate-x-1/2 whitespace-nowrap text-center text-[20px] font-bold leading-[22px] tracking-[1px]" data-node-id="378:186">剑琅选剑</p>
+
+    <div id="grid-fx-host" class="absolute z-10" data-node-id="221:225">
+      <canvas id="grid-shock-canvas" aria-hidden="true"></canvas>
+      <canvas id="grid-trail-canvas" aria-hidden="true"></canvas>
+      <div id="grid-viewport">
+        <div id="grid-track" class="flex flex-col"></div>
+      </div>
+    </div>
+
+    <div id="grid-page-dots" class="absolute left-1/2 z-10 flex items-center" aria-hidden="true"></div>
+
+    <div class="page-divider absolute left-0 top-[681px] z-10" data-node-id="221:237">
+      <img alt="" src="assets/images/page5-1/divider-bottom.svg">
+    </div>
+
+    <button type="button" id="next-page-btn" class="absolute left-1/2 top-[694.75px] z-10 flex w-[74px] -translate-x-1/2 flex-col items-center border-0 bg-transparent p-0" aria-label="下一页">
+      <div class="flex h-[31.356px] w-[74px] items-center justify-center overflow-hidden rounded-[148px] border-[1.48px] border-solid border-[#ffc96c] bg-[rgba(0,0,0,0.3)]">
+        <span class="whitespace-nowrap text-center text-[13px] font-medium leading-[normal] tracking-[-0.6038px] text-[#ffc96c]">下一页</span>
+      </div>
+      <span class="mt-[6.27px] flex h-[15.051px] w-[22.576px] items-center justify-center">
+        <img alt="" class="block size-full max-w-none rotate-180" src="assets/images/page5-1/arrow-down.svg">
+      </span>
+    </button>
+
+  </div>
+
+  <script src="js/page5-state.js"></script>
+  <script src="js/page5-fx.js"></script>
+  <script>
+  (function () {
+    var PAGE_COUNT = 7;
+    var ICONS_PER_PAGE = 9;
+    var GRID_PAGE_HEIGHT = 356;
+    var SWORD_COUNT = 63;
+    var GRID_SEED = 202606631;
+    var NAV_DELAY = 75;
+
+    var gridTrack = document.getElementById('grid-track');
+    var gridDots = document.getElementById('grid-page-dots');
+    var nextBtn = document.getElementById('next-page-btn');
+    var shockFx = Page5Fx.createGridShockwave(document.getElementById('grid-shock-canvas'));
+    var orbitTrail = Page5Fx.createGridOrbitTrail(document.getElementById('grid-trail-canvas'), {
+      getSelectedButton: function () {
+        if (selectedPage < 0 || selectedIndex < 0 || selectedPage !== currentPage) return null;
+        var page = gridTrack.querySelector('.grid-page[data-page="' + currentPage + '"]');
+        if (!page) return null;
+        return page.children[selectedIndex] || null;
+      }
+    });
+    var state = Page5State.loadState();
+    var currentPage = 0;
+    var selectedPage = state.selectedPage;
+    var selectedIndex = state.selectedIndex;
+    var iconPages = [];
+    var navigating = false;
+
+    Page5State.initPageEnter();
+    Page5Fx.initGoldenSparks(document.getElementById('spark-canvas'));
+    Page5Fx.initTitleFx(document.getElementById('title-block'));
+
+    function swordSrc(index) {
+      return 'assets/images/swords/sword-' + (index + 1) + '.png';
+    }
+
+    function sword2Src(index) {
+      return 'assets/images/swords2/sword-' + (index + 1) + '.png';
+    }
+
+    function nextSeed(seed) {
+      return (seed * 1103515245 + 12345) & 0x7fffffff;
+    }
+
+    /** Fisher-Yates shuffle of arbitrary index array with fixed seed */
+    function shuffleIndices(arr, seed) {
+      var a = arr.slice();
+      for (var i = a.length - 1; i > 0; i--) {
+        seed = nextSeed(seed);
+        var j = Math.floor((seed / 0x7fffffff) * (i + 1));
+        var tmp = a[i];
+        a[i] = a[j];
+        a[j] = tmp;
+      }
+      return a;
+    }
+
+    function buildIconPages() {
+      iconPages = [];
+      var page0 = [];
+      for (var j = 0; j < ICONS_PER_PAGE; j++) {
+        page0.push({ swordIndex: j, src: sword2Src(j) });
+      }
+      iconPages.push(page0);
+
+      var page1 = [];
+      for (var j = 0; j < ICONS_PER_PAGE; j++) {
+        page1.push({ swordIndex: 9 + j, src: sword2Src(9 + j) });
+      }
+      iconPages.push(page1);
+
+      var page2 = [];
+      for (var j = 0; j < ICONS_PER_PAGE; j++) {
+        page2.push({ swordIndex: 18 + j, src: sword2Src(18 + j) });
+      }
+      iconPages.push(page2);
+
+      /* 第 4 页固定主套 28~36（0-based index 27~35） */
+      var page3 = [];
+      for (var j = 0; j < ICONS_PER_PAGE; j++) {
+        var fixedIdx = 27 + j;
+        page3.push({ swordIndex: fixedIdx, src: swordSrc(fixedIdx) });
+      }
+      iconPages.push(page3);
+
+      /* 第 5 页固定主套 37~45（0-based index 36~44） */
+      var page4 = [];
+      for (var j = 0; j < ICONS_PER_PAGE; j++) {
+        var fixedIdx2 = 36 + j;
+        page4.push({ swordIndex: fixedIdx2, src: swordSrc(fixedIdx2) });
+      }
+      iconPages.push(page4);
+
+      /* 第 6 页固定主套 46~54（0-based index 45~53） */
+      var page5 = [];
+      for (var j = 0; j < ICONS_PER_PAGE; j++) {
+        var fixedIdx3 = 45 + j;
+        page5.push({ swordIndex: fixedIdx3, src: swordSrc(fixedIdx3) });
+      }
+      iconPages.push(page5);
+
+      /* 第 7 页固定主套 55~63（0-based index 54~62） */
+      var page6 = [];
+      for (var j = 0; j < ICONS_PER_PAGE; j++) {
+        var fixedIdx4 = 54 + j;
+        page6.push({ swordIndex: fixedIdx4, src: swordSrc(fixedIdx4) });
+      }
+      iconPages.push(page6);
+    }
+
+    function isSelected(pageIdx, idx) {
+      return selectedPage === pageIdx && selectedIndex === idx;
+    }
+
+    function updateDots() {
+      Page5Fx.updateGridDots(gridDots, PAGE_COUNT, currentPage);
+    }
+
+    function updateSelectionUI() {
+      var buttons = gridTrack.querySelectorAll('.grid-icon-btn');
+      for (var i = 0; i < buttons.length; i++) {
+        var btn = buttons[i];
+        btn.classList.toggle('is-selected', isSelected(
+          Number(btn.getAttribute('data-page')),
+          Number(btn.getAttribute('data-index'))
+        ));
+      }
+    }
+
+    function syncCurrentPageClass() {
+      var pages = gridTrack.querySelectorAll('.grid-page');
+      for (var i = 0; i < pages.length; i++) {
+        pages[i].classList.toggle('is-current', i === currentPage);
+      }
+    }
+
+    function updateTrackPosition(animate) {
+      if (animate === false) gridTrack.classList.add('no-transition');
+      else gridTrack.classList.remove('no-transition');
+      gridTrack.style.transform = 'translateY(' + (-currentPage * GRID_PAGE_HEIGHT) + 'px)';
+      if (animate === false) {
+        requestAnimationFrame(function () { gridTrack.classList.remove('no-transition'); });
+      }
+      syncCurrentPageClass();
+      updateDots();
+      updateSelectionUI();
+    }
+
+    function persistState() {
+      var s = Page5State.loadState();
+      s.gridPage = currentPage;
+      s.selectedPage = selectedPage;
+      s.selectedIndex = selectedIndex;
+      s.swordSrc = selectedPage >= 0
+        ? iconPages[selectedPage][selectedIndex].src
+        : (state.swordSrc || sword2Src(0));
+      Page5State.setState(s);
+    }
+
+    function goToGridPage(page) {
+      currentPage = (page % PAGE_COUNT + PAGE_COUNT) % PAGE_COUNT;
+      orbitTrail.clear();
+      updateTrackPosition(true);
+      persistState();
+    }
+
+    function selectIcon(pageIdx, idx, btn) {
+      if (navigating) return;
+      navigating = true;
+      selectedPage = pageIdx;
+      selectedIndex = idx;
+      updateSelectionUI();
+      persistState();
+      Page5Fx.triggerIconBounce(btn);
+      shockFx.trigger(btn);
+      window.setTimeout(function () {
+        Page5State.navigateWithSlide('page5-2.html', 'forward');
+      }, NAV_DELAY);
+    }
+
+    function createIconButton(pageIdx, idx, icon) {
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'grid-icon-btn relative aspect-square rounded-full' +
+        (isSelected(pageIdx, idx) ? ' is-selected' : '');
+      btn.setAttribute('data-page', String(pageIdx));
+      btn.setAttribute('data-index', String(idx));
+      btn.setAttribute('aria-label', '选择第' + (pageIdx + 1) + '页第' + (idx + 1) + '把剑');
+      btn.innerHTML =
+        '<div class="grid-icon-bounce-wrap size-full">' +
+          '<div class="icon-border-silver relative size-full rounded-full">' +
+            '<div class="relative size-full overflow-hidden rounded-full">' +
+              '<img alt="" class="absolute inset-0 size-full max-w-none rounded-full object-cover" src="' + icon.src + '">' +
+            '</div>' +
+          '</div>' +
+        '</div>';
+      btn.addEventListener('click', function () { selectIcon(pageIdx, idx, btn); });
+      return btn;
+    }
+
+    function renderGrid() {
+      gridTrack.innerHTML = '';
+      for (var p = 0; p < PAGE_COUNT; p++) {
+        var pageEl = document.createElement('div');
+        pageEl.className = 'grid-page grid grid-cols-3 grid-rows-3 gap-x-[10px] gap-y-[22px]';
+        pageEl.setAttribute('data-page', String(p));
+        for (var i = 0; i < iconPages[p].length; i++) {
+          pageEl.appendChild(createIconButton(p, i, iconPages[p][i]));
+        }
+        gridTrack.appendChild(pageEl);
+      }
+      updateTrackPosition(false);
+    }
+
+    nextBtn.addEventListener('click', function () { goToGridPage(currentPage + 1); });
+
+    buildIconPages();
+    currentPage = Math.min(Math.max(state.gridPage || 0, 0), PAGE_COUNT - 1);
+    selectedPage = typeof state.selectedPage === 'number' ? state.selectedPage : -1;
+    selectedIndex = typeof state.selectedIndex === 'number' ? state.selectedIndex : -1;
+    renderGrid();
+  })();
+  </script>
+</body>
+</html>
